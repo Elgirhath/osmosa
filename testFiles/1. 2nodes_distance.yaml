@@ -1,0 +1,18 @@
+search:
+  foo:
+    type: node
+    constraints: leisure=fitness_station
+    filter:
+      distance:
+        from: bar
+        lessThan: 500
+  bar:
+    type: node
+    constraints:
+      or:
+        - leisure=dog_park
+        - leisure=park
+    filter:
+      distance:
+        from: foo
+        lessThan: 500

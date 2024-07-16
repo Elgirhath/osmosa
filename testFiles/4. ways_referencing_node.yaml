@@ -1,0 +1,11 @@
+bbox: [0.0, 0.0, 10.0, 10.0]
+search:
+  bus_stops:
+    type: node
+    hide: true
+    filter:
+      - highway=bus_stop
+  ways_with_bus_stops:
+    type: way
+    filter:
+      - contains: bus_stops

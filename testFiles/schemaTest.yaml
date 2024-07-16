@@ -1,0 +1,14 @@
+properties: 
+  test: &filterArray
+    type: "array"
+    items:
+      oneOf:
+        - type: "object"
+          properties:
+            key: 
+              type: "string"
+          additionalProperties: false
+        - type: "object"
+          properties:
+            or: *filterArray
+          additionalProperties: false

@@ -1,0 +1,11 @@
+bbox: [0.0, 0.0, 10.0, 10.0]
+search:
+  parks:
+    type: area
+    hide: true
+    filter:
+      - leisure=park
+  fitness_stations:
+    type: node
+    filter:
+      - inArea: parks

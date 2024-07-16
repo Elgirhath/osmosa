@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=./schema.yaml
+
+search:
+  foo:
+    type: node
+    filter:
+      - key: leisure
+        value: fitness_station
+      - distance:
+          from: bar
+          distance: 500
+  bar:
+    type: node
+    filter:
+      - or:
+        - key: leisure
+          value: dog_park
+        - key: 
+            not: leisure
+          value: "*park"
+      - distance:
+          from: foo
+          distance: 500

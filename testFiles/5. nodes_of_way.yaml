@@ -1,0 +1,11 @@
+bbox: [0.0, 0.0, 10.0, 10.0]
+search:
+  tramways:
+    type: way
+    hide: true
+    filter:
+      - railway=tram
+  tramway_nodes:
+    type: node
+    filter:
+      - containedBy: tramways

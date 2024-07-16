@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=https://json-schema.org/draft/2020-12/schema
+
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: "https://example.com/product.schema.json"
+title: "osmosa"
+description: "Open Street Maps Open Search Api"
+type: "object"
+definitions:
+  regexValue:
+    oneOf:
+      - type: string
+      - type: "object"
+        properties:
+          not:
+            type: string
+  filterArray:
+    type: "array"
+    items:
+      oneOf:
+        - type: "object"
+          properties:
+            key:
+              $ref: "#/definitions/regexValue"
+            value:
+              $ref: "#/definitions/regexValue"
+          additionalProperties: false
+        - type: "object"
+          properties:
+            distance: 
+              type: "object"
+              properties:
+                from: 
+                  type: "string"
+                distance: 
+                  type: "number"
+          additionalProperties: false
+        - type: "object"
+          properties:
+            or:
+              $ref: "#/definitions/filterArray"
+          additionalProperties: false
+properties: 
+  search: 
+    description: "Elements to search for"
+    type: "object"
+    patternProperties:
+      ".*": 
+        description: "Element type"
+        type: "object"
+        properties: 
+          type: 
+            description: "Element type"
+            enum: ["node", "way", "relation", "area"]
+          filter:
+            $ref: "#/definitions/filterArray"
